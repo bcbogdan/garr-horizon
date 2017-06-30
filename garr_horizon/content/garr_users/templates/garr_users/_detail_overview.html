@@ -1,0 +1,37 @@
+{% load i18n %}
+
+<div class="detail">
+  <dl class="dl-horizontal">
+    <dt>{% trans "ID" %}</dt>
+    <dd>{{ user.id }}</dd>
+    <dt>{% trans "User Name" %}</dt>
+    <dd data-display="{{ user.name|default:user.id }}">{{ user.name }}</dd>
+    <dt>{% trans "Name" %}</dt>
+    <dd>{{ user.name }}</dd>
+    <dt>{% trans "email" %}</dt>
+    <dd>{{ user.email }}</dd>
+    <dt>{% trans "Identity Provider" %}</dt>
+    <dd>{{ user.idp }}</dd>
+    {% if user.project %}
+      <dt>{% trans "Project Name" %}</dt>
+      <dd>{{ user.project }}</dd>
+    {% endif %}
+    {% if user.source %}
+      <dt>{% trans "Source" %}</dt>
+      <dd>{{ user.source }}</dd>
+    {% endif %}
+    {% if user.duration %}
+      <dt>{% trans "Duration" %}</dt>
+      <dd>{{ user.duration }}</dd>
+    {% endif %}
+    {% if user.cn %}
+      <dt>{% trans "Common Name" %}</dt>
+      <dd>{{ user.cn }}</dd>
+    {% endif %}
+    <dt>{% trans "Creation Date" %}</dt>
+    <dd>{{ user.created }}</dd>
+    <dt>{% trans "Last Update" %}</dt>
+    <dd>{{ user.updated }}</dd>
+  </dl>
+</div>
+
