@@ -1,0 +1,9 @@
+include setup.py
+include LICENSE
+include README.rst
+include requirements.txt
+recursive-include garr_horizon *.html *.css *.js
+
+exclude .gitignore
+
+global-exclude *.pyc
