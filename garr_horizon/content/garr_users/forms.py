@@ -276,7 +276,7 @@ class ChangePasswordForm(PasswordMixin, forms.SelfHandlingForm):
 
         try:
             user = User.objects.get(id=user_id)
-            user.password = password
+            user.password = User.hash_password(password)
             user.save()
             messages.success(request,
                              _('User password has been updated successfully.'))

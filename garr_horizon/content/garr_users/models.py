@@ -16,7 +16,8 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 from __future__ import unicode_literals
-
+from django.contrib.auth.hashers import make_password
+from openstack_dashboard.local.local_settings import HASHING_ALGORITHM
 from django.db import models
 from datetime import datetime
 
@@ -73,16 +74,23 @@ class User(models.Model):
         user.save()
 
     @staticmethod
+    hash_password(password)
+        return make_password(
+            password, hasher=HASHING_ALGORITHM
+        )
+
+    @staticmethod
     def create_user(user_data):
         if str(user_data['project']) != '':
             project = Project.objects.get(id=int(user_data['project']))
         else:
             project = None
+        hashed_pass = User.hash_password(user_data['password'])
         new_user = User(
             name=user_data['name'],
             email=user_data['email'],
             idp=user_data['idp'],
-            password=user_data['password'],
+            password=hashed_pass,
             cn=user_data['cn'],
             source=user_data['source'],
             project=project,

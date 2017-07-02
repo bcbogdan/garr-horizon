@@ -126,7 +126,6 @@ class EnableUsersAction(tables.BatchAction):
         return api.keystone.keystone_can_edit_user()
 
     def enable(self, request, user_id):
-        pdb.set_trace()
         domain = api.keystone.get_default_domain(request)
         default_role = api.keystone.get_default_role(request)
         keystone_projects, has_more = api.keystone.tenant_list(request)
