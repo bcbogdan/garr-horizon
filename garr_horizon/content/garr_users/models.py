@@ -74,7 +74,7 @@ class User(models.Model):
         user.save()
 
     @staticmethod
-    hash_password(password)
+    def hash_password(password):
         return make_password(
             password, hasher=HASHING_ALGORITHM
         )
